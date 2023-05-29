@@ -1,0 +1,43 @@
+def dfs(graph, start, visited=None):
+    if visited is None:
+        visited = set()
+
+    visited.add(start)
+    results = [start]
+
+    for child in graph[start]:
+        if child not in visited:
+            results.extend(dfs(graph, child, visited))
+
+    return results
+
+
+
+def bfs(graph, start):
+    visited = set()
+    queue = [start]
+    while queue:
+        node = queue.pop(0)
+        if node not in visited:
+            visited.add(node)
+            queue.extend(graph[node])
+    return visited
+
+
+# Example usage
+adjacency_list = {
+    0: [1, 2],
+    1: [0, 3, 4],
+    2: [0, 5],
+    3: [1],
+    4: [1],
+    5: [2]
+}
+
+print("DFS traversal:")
+dfs_result = dfs(adjacency_list, 0)
+print(dfs_result)
+
+print("BFS traversal:")
+bfs_result = bfs(adjacency_list, 0)
+print(bfs_result)

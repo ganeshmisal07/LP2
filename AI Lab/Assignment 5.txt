@@ -1,0 +1,30 @@
+# Define the chatbot function
+def chatbot_response(user_input):
+    user_input = user_input.lower()
+
+    # Respond to different user inputs
+    if "hello" in user_input:
+        return "Hello! How can I assist you?"
+    elif "order" in user_input:
+        return "Sure, I can help you with that. Please provide me with your order details."
+    elif "payment" in user_input:
+        return "To make a payment, please visit our website and proceed to the payment section."
+    elif "refund" in user_input:
+        return "I apologize for any inconvenience. To request a refund, please contact our customer support."
+    elif "thanks" in user_input or "thank you" in user_input:
+        return "You're welcome! If you have any more questions, feel free to ask."
+    elif "bye" in user_input:
+        return "Goodbye! Have a great day!"
+    else:
+        return "I'm sorry, I couldn't understand your request. Could you please rephrase it?"
+
+# Main interaction loop
+print("Welcome! How can I assist you?")
+while True:
+    user_input = input("> ")
+    if user_input.lower() == "exit":
+        print("Thank you for using our service. Goodbye!")
+        break
+    else:
+        bot_response = chatbot_response(user_input)
+        print(bot_response)
